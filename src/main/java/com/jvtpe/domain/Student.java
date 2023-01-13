@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,13 +15,17 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message="This field cannot be left blank")
     private String firstName;
 
+    @NotEmpty(message="This field cannot be left blank")
     private String lastName;
 
+    @NotNull(message = "This field cannot be left blank")
     private Integer grade;
 
-    private LocalDateTime createdDate = LocalDateTime.now();
+    private LocalDateTime createDate = LocalDateTime.now();
+
 
     public Long getId() {
         return id;
@@ -49,8 +55,8 @@ public class Student {
         this.grade = grade;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public LocalDateTime getCreateDate() {
+        return createDate;
     }
 
 }
